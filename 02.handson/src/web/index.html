@@ -1,0 +1,29 @@
+<html>
+<script type="text/javascript" src="dwr/engine.js"></script>
+<script type="text/javascript" src="dwr/util.js"></script>
+<script type="text/javascript" src="dwr/interface/Greeting.js"></script>
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.serialize.js"></script>
+<body>
+<form id="name_age_form">
+  <p>
+    Name: <input type="text" name="name"/><br />
+    Age: <input type="text" name="age"/><br />
+    <input value="Send" type="button" onclick="update()"/>
+  </p>
+</form>
+<p>
+  Reply: <span id="reply"></span>
+</p>
+</body>
+<script type="text/javascript">
+function update() {
+  var name = $('#name_age_form [name=name]').val();
+  var age = $('#name_age_form [name=age]').val();
+  Greeting.sayHello(name, age, { callback: function(data) {
+      $('#reply').text(data);
+  }})
+  
+}
+</script>
+</html>
